@@ -2,8 +2,8 @@
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 #include "RTC.h"
-char ssid[] = "S23Ultra";
-char pass[] = "yehyehye";
+char ssid[] = "SSID"; // your SSID
+char pass[] = "PASSWORD"; // the password of your WiFi SSID
 WiFiServer server(80);
 int status = WL_IDLE_STATUS;
 WiFiUDP Udp;
@@ -146,3 +146,4 @@ void showStateOffHtml() {
     client.stop();
   }
 }
+
