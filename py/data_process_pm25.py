@@ -1,25 +1,19 @@
 import matplotlib.pyplot as plt
 from datetime import datetime
+
+filename = "FILENAME.txt" # change FILENAME to your file name
+
 data = {"date" : [],
         "time" : [],
-        "t" : [],
-        "h" : [],
-        "pm1" : [],
         "pm25" : [],
-        "pm10" : [],
-        "p" : []}
-with open("FILENAME", "r") as f: # change FILENAME to your file name
+       }
+with open(filename, "r") as f: 
     for line in f:
         d1 = line.split()
         
         data["date"].append(d1[0])
-        data["time"].append(datetime.strptime(d1[1], "%H:%M:%S"))
-        data["t"].append(float(d1[2]))
-        data["h"].append(float(d1[3]))
-        data["pm1"].append(int(d1[4]))
+        data["time"].append(datetime.strptime(d1[0] + " " + d1[1], "%Y.%m.%d %H:%M:%S"))
         data["pm25"].append(int(d1[5]))
-        data["pm10"].append(int(d1[6]))
-        data["p"].append(float(d1[7]))
 
 d = "pm25"
 al = 0.3
