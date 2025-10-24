@@ -61,8 +61,14 @@ All the configurations available are in configuration.h. The contents are shown 
 After uploading, press the button to start collecting temperature, humidity, pm1.0, pm2.5, pm10, and air pressure data to the file in the microSD card.
 If the LED matrix doesn't show "ON" or the LED doesn't light up, just press the button again.
 
+during data collection, you can view the real time data on your web browser.
+The Arduino's IP will be shown on Serial Monitor.
+If the Arduino is connected to your phone AP, the IP can be seen somewhere in your phone's AP settings. The place varies and depends on your phone's brand.
+
 ### Python
 
-After the data collection, you can copy the file in your SD card to the same path with the Python file.
+After the data collection, you can copy the file in your SD card to the same path as the Python file.
 
 Please make sure that matplotlib is installed.
+
+
