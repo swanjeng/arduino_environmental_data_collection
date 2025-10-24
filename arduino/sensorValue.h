@@ -3,9 +3,8 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
+#include "configuration.h"
 
-#define PMSserial Serial1
-#define DHT22_pin A0
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 Adafruit_BME280 bme;
@@ -38,7 +37,7 @@ String pmsdata() {
     str += String(data.PM_AE_UG_2_5);
     str += " ";
     str += String(data.PM_AE_UG_10_0);
-  } else str = "error error";
+  } else str = "error error error";
   return str;
 }
 

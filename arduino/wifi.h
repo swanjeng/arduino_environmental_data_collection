@@ -1,9 +1,8 @@
-#include "WiFiS3.h"
 #include <NTPClient.h>
 #include <WiFiUdp.h>
 #include "RTC.h"
-char ssid[] = "SSID"; // your SSID
-char pass[] = "PASSWORD"; // the password of your WiFi SSID
+#include "configuration.h"
+
 WiFiServer server(80);
 int status = WL_IDLE_STATUS;
 WiFiUDP Udp;
@@ -11,7 +10,6 @@ NTPClient timeClient(Udp);
 int sdState;
 
 void initWifi() {
-  // WiFi.config(IPAddress(192,168,252,90));
   while (status != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(ssid);
@@ -146,4 +144,3 @@ void showStateOffHtml() {
     client.stop();
   }
 }
-
