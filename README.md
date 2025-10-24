@@ -7,7 +7,7 @@
 1. Any Arduino boards that can connect to the Internet
 2. a PMSA003 particle concentration sensor
 3. a DHT22 temperature and humidity sensor
-4. an SD card module
+4. an SD card module and a microSD card
 5. a BME280 air pressure sensor
 6. a pushbutton
 7. an LED or, if using Uno R4 WiFi, built-in LED matrix
