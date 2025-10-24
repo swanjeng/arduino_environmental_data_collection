@@ -6,6 +6,6 @@
 #define PMSserial Serial1
 #define DHT22_pin A0
 #define led 4
-#define ssid "S23Ultra"
-#define pass "yehyehye"
+#define ssid "YOUR SSID"
+#define pass "YOUR PASSWORD"
 #define interval 30000 // collection interval
