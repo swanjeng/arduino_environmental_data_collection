@@ -1,5 +1,7 @@
 # arduino_environmental_data_collection
 
+Ever wanna know the temperature, humidity, air quality and air pressure at your surroundings? You can use Arduino and some sensors to do it. Here is an instruction to making this.
+
 ## hardware
 
 ### parts
@@ -71,4 +73,4 @@ After the data collection, you can copy the file in your SD card to the same pat
 
 Please make sure that matplotlib is installed.
 
-
+The Python program will visualize the data collected.
