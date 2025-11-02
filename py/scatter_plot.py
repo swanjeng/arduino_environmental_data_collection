@@ -6,40 +6,6 @@ def subPlot(data, ax, t1, t2, x, y):
     ax[x - 1][y - 1].set_xlabel(t1.upper())
     ax[x - 1][y - 1].set_ylabel(t2.upper())
 
-def r(x, y):
-    # average
-    avg_of_x = 0
-    avg_of_y = 0
-    for i in range(len(x)):
-        avg_of_x += x[i]
-        avg_of_y += y[i]
-
-    avg_of_x /= len(x)
-    avg_of_y /= len(x)
-
-    # standard deviation
-    sd_of_x = 0
-    sd_of_y = 0
-    for i in range(len(x)):
-        sd_of_x += (x[i]**2)
-        sd_of_y += (y[i]**2)
-
-    sd_of_x /= len(x)
-    sd_of_y /= len(x)
-
-    sd_of_x -= (avg_of_x ** 2)
-    sd_of_y -= (avg_of_y ** 2)
-
-    sd_of_x **= 0.5
-    sd_of_y **= 0.5
-
-    # r
-    r = 0
-    for i in range(len(x)):
-        r += (((x[i] - avg_of_x) / sd_of_x) * ((y[i] - avg_of_y) / sd_of_y))
-    r /= len(x)
-    return r
-
 filenames = glob.glob(r'2025*.txt')
 
 data = {"temperature" : [],
@@ -64,17 +30,14 @@ for filename in filenames:
 f, ax = plt.subplots(2, 2)
 
 subPlot(data, ax, "pm1", "pm2.5", 1, 1)
-print(r(data["pm1"], data["pm2.5"]))
 
 subPlot(data, ax, "pm1", "pm10", 1, 2)
-print(r(data["pm1"], data["pm10"]))
 
 subPlot(data, ax, "pm2.5", "pm10", 2, 1)
-print(r(data["pm2.5"], data["pm10"]))
 
 subPlot(data, ax, "humidity", "pm2.5", 2, 2)
-print(r(data["humidity"], data["pm2.5"]))
 
 plt.suptitle("Scatter Plots of Environmental Data")
+
 
 plt.show()
