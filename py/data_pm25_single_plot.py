@@ -4,10 +4,10 @@ from matplotlib.font_manager import FontProperties as font
 from datetime import datetime
 import glob
 
-plt.rcParams['font.sans-serif'] = ['SimSun']  # 指定一个支持中文的字体，例如 'SimHei'
+plt.rcParams['font.sans-serif'] = ['SimSun']  # 中文字體
 mpl.rcParams['axes.unicode_minus'] = False
 
-filenames = glob.glob(r'*HOU_CHEN_DU.txt')
+filenames = glob.glob(r'*abc.txt') # change abc to your file suffix for the same location
 
 for i in range(len(filenames)):
     if i != 1:
@@ -23,5 +23,6 @@ for i in range(len(filenames)):
                     data["pm25"].append(int(d1[5]))
             plt.plot(data["time"], data["pm25"], color = (0, i / len(filenames), 0), label = d1[0])
             plt.legend()
-plt.title("PM2.5 Levels Over Time at 好成嘟 Restaurant")
+plt.title("PM2.5 Levels Over Time at abc")
 plt.show()
+
