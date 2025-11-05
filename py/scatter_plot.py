@@ -6,7 +6,7 @@ def subPlot(data, ax, t1, t2, x, y):
     ax[x - 1][y - 1].set_xlabel(t1.upper())
     ax[x - 1][y - 1].set_ylabel(t2.upper())
 
-filenames = glob.glob(r'2025*.txt')
+filenames = glob.glob(r'*.txt') # All files from the micro SD card
 
 data = {"temperature" : [],
         "humidity" : [],
@@ -30,14 +30,10 @@ for filename in filenames:
 f, ax = plt.subplots(2, 2)
 
 subPlot(data, ax, "pm1", "pm2.5", 1, 1)
-
 subPlot(data, ax, "pm1", "pm10", 1, 2)
-
 subPlot(data, ax, "pm2.5", "pm10", 2, 1)
-
 subPlot(data, ax, "humidity", "pm2.5", 2, 2)
 
 plt.suptitle("Scatter Plots of Environmental Data")
-
 
 plt.show()
