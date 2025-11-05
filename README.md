@@ -33,7 +33,7 @@ A0 | the DATA pin of the DHT22 sensor
 SDA | the SDA pin of the BME280 sensor
 SCL | the SCL pin of the BME280 sensor
 
-The SD card module and the BME280 sensor are connected to the Arduino's 3.3V pin, and the PMSA003 sensor is connected to the Arduino's 5V pin. All the components are connected to GND.
+The SD card module and the BME280 sensor are connected to the Arduino's 3.3V pin, and the PMSA003 sensor is connected to the Arduino's 5V pin. All the components are connected to the Arduino's GND.
 
 ## software
 
@@ -60,7 +60,9 @@ All the configurations available are in configuration.h. The contents are shown 
 #define interval 30000 // collection interval
 ```
 
-After uploading, press the button to start collecting temperature, humidity, pm1.0, pm2.5, pm10, and air pressure data to the file in the microSD card.
+Before inserting the micro SD card into the SD card module, make sure that the micro SD card is formatted as FAT32 and that in the root path of the micro SD card, there is a file with the same name as the fileName constant in configuration.h.
+
+After the Arduino IDE has uploaded the program, you can press the button to start collecting temperature, humidity, pm1.0, pm2.5, pm10, and air pressure data to the file in the microSD card.
 If the LED matrix doesn't show "ON" or the LED doesn't light up, just press the button again.
 
 during data collection, you can view the real time data on your web browser.
@@ -69,8 +71,8 @@ If the Arduino is connected to your phone AP, the IP can be seen somewhere in yo
 
 ### Python
 
-After the data collection, you can copy the file in your SD card to the same path as the Python file.
+After the data collection, you can copy the file in your SD card to the same path as the Python files.
 
-Please make sure that matplotlib is installed.
+Please make sure that matplotlib is installed and the file name is correct.
 
-The Python program will visualize the data collected.
+Different Python programs will visualize the collected data in different ways.
