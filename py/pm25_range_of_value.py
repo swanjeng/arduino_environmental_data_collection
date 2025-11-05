@@ -12,7 +12,11 @@ with open(filename, "r") as f:
         d1 = line.split()
         
         data["date"].append(d1[0])
+        
+        # Since there can be some delay when collecting and the interval may not be always the same, 
+        # We should use the datetime format instead of pure strings.
         data["time"].append(datetime.strptime(d1[0] + " " + d1[1], "%Y.%m.%d %H:%M:%S"))
+        
         data["pm25"].append(int(d1[5]))
 
 d = "pm25"
