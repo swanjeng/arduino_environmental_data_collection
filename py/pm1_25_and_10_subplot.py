@@ -1,3 +1,5 @@
+# For this program, when files are sorted by name, they should also be sorted by time.
+
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.dates as mdates
@@ -8,8 +10,10 @@ plt.rcParams['font.sans-serif'] = ['SimSun']
 mpl.rcParams['axes.unicode_minus'] = False
 
 def subPlot(data, ax, type, p, col):
+    # show time only
     time_formatter = mdates.DateFormatter('%H:%M:%S')
     ax[p - 1].xaxis.set_major_formatter(time_formatter)
+    
     ax[p - 1].plot(data["time"], data[type], color = col, label = data["date"][0])
     ax[p - 1].set_ylabel(type.upper())
     ax[p - 1].legend(loc = 'upper right')
@@ -47,3 +51,4 @@ plt.legend()
 # plt.tight_layout() # uncomment this if needed
 
 plt.show()
+
