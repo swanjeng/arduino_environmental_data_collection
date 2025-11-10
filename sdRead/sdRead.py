@@ -1,20 +1,24 @@
 import serial
 import time
 
-ser = serial.Serial("COM3", 9600)
-file = "FILENAME.txt"
+ser = serial.Serial("COM3", 115200)
+file = "123456789.txt" # specify your file name here
 
-ser.write(b"1")
-time.sleep(2)
+ser.write(b"1") # signal to start sending data
+time.sleep(2) # wait for the Arduino to send data
 with open(file, "w") as f:
-    while ser.in_waiting:
-        line = ser.readline().decode("utf-8").strip()
-        print(line)
-        f.write(line + "\n")
+    while True:
+        if ser.in_waiting:
+            s =  ser.readline().decode("utf-8").strip()
+            if s == "A": # end of file signal
+                break
+            line = s
+            print(line)
+            f.write(line + "\n")
 
-time.sleep(1)
-ser.write(b"0")
-while not ser.in_waiting:
+time.sleep(1) # wait before sending the next signal
+ser.write(b"0") # signal to clear the file in SD card
+while not ser.in_waiting: # wait for the Arduino to send "done" signal
     pass
 
 print("done")
