@@ -73,6 +73,8 @@ If the Arduino is connected to your phone AP, the IP can be seen somewhere in yo
 
 After the data collection, you can copy the file in your SD card to the same path as the Python files.
 
+Iㄑf you don't have an SD card reader, you can use the programs in `SDRead/`. The Arduino sketch should be uploaded before the Python code runs.
+
 Please make sure that matplotlib is installed and the file name is correct.
 
 Different Python programs will visualize the collected data in different ways.
