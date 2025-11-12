@@ -73,7 +73,16 @@ If the Arduino is connected to your phone AP, the IP can be seen somewhere in yo
 
 After the data collection, you can copy the file in your SD card to the same path as the Python files.
 
-Iㄑf you don't have an SD card reader, you can use the programs in `SDRead/`. The Arduino sketch should be uploaded before the Python code runs.
+If you don't have an SD card reader, you can use the programs in `sdRead/`. The Arduino sketch should be uploaded before the Python code runs.
+
+The programs will transfer the data in the micro SD card to a file in the path of the Python program, and then the data file in the micro SD card will be cleared for the next data collection.
+
+```python
+ser = serial.Serial("COM3", 115200) # change COM3 to your Arduino's COM port.
+file = "123456789.txt" # specify your file name here
+```
+
+Then, it is the data analyzing part.
 
 Please make sure that matplotlib is installed and the file name is correct.
 
