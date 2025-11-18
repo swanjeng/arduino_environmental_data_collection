@@ -77,13 +77,15 @@ If you don't have an SD card reader, you can use the programs in `sdRead/`. The 
 
 The programs will transfer the data in the micro SD card to a file in the path of the Python program, and then the data file in the micro SD card will be cleared for the next data collection.
 
+Before running the Python program, please make sure that the Serial Monitor in Arduino IDE is closed.
+
 ```python
-ser = serial.Serial("COM3", 115200) # change COM3 to your Arduino's COM port.
+ser = serial.Serial("COM3", 115200) # change COM3 to your Arduino's Serial port.
 file = "123456789.txt" # specify your file name here
 ```
 
 Then, it is the data analyzing part.
 
-Please make sure that matplotlib is installed and the file name is correct.
+Please make sure that `matplotlib` and `glob` are installed and the file names are correct.
 
 Different Python programs will visualize the collected data in different ways.
