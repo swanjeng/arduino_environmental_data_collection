@@ -33,7 +33,7 @@ A0 | the DATA pin of the DHT22 sensor
 SDA | the SDA pin of the BME280 sensor
 SCL | the SCL pin of the BME280 sensor
 
-The SD card module and the BME280 sensor are connected to the Arduino's 3.3V pin, and the PMSA003 sensor is connected to the Arduino's 5V pin. All the components are connected to the Arduino's GND.
+The SD card module, the DHT22 sensor and the BME280 sensor are connected to the Arduino's 3.3V pin, and the PMSA003 sensor is connected to the Arduino's 5V pin. All the components are connected to the Arduino's GND.
 
 ## software
 
