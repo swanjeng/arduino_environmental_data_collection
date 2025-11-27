@@ -4,6 +4,8 @@
 #include "wifi.h"
 #include "ledMat.h"
 
+#define btn 3
+
 volatile byte state = 0;
 long m;
 String dataStr = "";
