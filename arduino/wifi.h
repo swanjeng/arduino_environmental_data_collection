@@ -1,4 +1,5 @@
 #include <NTPClient.h>
+#include "WiFiS3.h"
 #include <WiFiUdp.h>
 #include "RTC.h"
 #include "configuration.h"

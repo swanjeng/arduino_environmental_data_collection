@@ -3,9 +3,10 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
-#include "configuration.h"
 
 #define SEALEVELPRESSURE_HPA (1013.25)
+#define PMSserial Serial1
+#define DHT22_pin A0
 
 Adafruit_BME280 bme;
 DHT dht(DHT22_pin, DHT22); 

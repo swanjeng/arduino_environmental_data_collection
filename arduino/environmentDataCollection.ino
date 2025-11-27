@@ -2,12 +2,8 @@
 #include <SD.h>
 #include "sensorValue.h"
 #include "wifi.h"
+#include "ledMat.h"
 
-#ifdef UNOR4WIFI
-    #include "ledMat.h"
-#else
-    #define ledpin led
-#endif
 volatile byte state = 0;
 long m;
 String dataStr = "";
@@ -15,21 +11,11 @@ String dataStr = "";
 void ISR() {
   state = (state ? 0 : 1);
   if (state == 1) {
-    #ifdef UNOR4WIFI
-      matrix.renderBitmap(f1, 8, 12);
-    #else
-      digitalWrite(ledpin, HIGH);
-    #endif
+    matrix.renderBitmap(f1, 8, 12);
     File dataFile = SD.open(fileName, FILE_WRITE);
-    dataFile.println("start ");
+    dataFile.println("start");
     dataFile.close();
-  } else {
-    #ifdef UNOR4WIFI
-      matrix.renderBitmap(f0, 8, 12);
-    #else
-      digitalWrite(ledpin, LOW);
-    #endif
-  }
+  } else matrix.renderBitmap(f0, 8, 12);
 }
 
 void setup() {
@@ -39,12 +25,8 @@ void setup() {
   sdState = 1;
   initSensors();
   initWifi();
-  #ifdef UNOR4WIFI
-    matrix.begin();
-    matrix.renderBitmap(f0, 8, 12);
-  #else
-    pinMode(ledpin, OUTPUT);
-  #endif
+  matrix.begin();
+  matrix.renderBitmap(f0, 8, 12);
   showStateOffHtml();
   pinMode(btn, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(btn), ISR, RISING);
