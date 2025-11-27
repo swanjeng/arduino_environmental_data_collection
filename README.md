@@ -40,7 +40,6 @@ All the configurations available are in configuration.h. The contents are shown 
 
 ```cpp
 #define fileName "LOG3.txt" // the file in SD card
-#define DHT22_pin A0
 #define ssid "SSID"
 #define pass "PASS"
 #define interval 30000 // collection interval (ms)
