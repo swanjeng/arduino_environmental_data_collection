@@ -3,21 +3,37 @@
 #include "sensorValue.h"
 #include "wifi.h"
 #include "ledMat.h"
-
 #define btn 3
 
-volatile byte state = 0;
-long m;
+byte is_collecting_data = 0;
+long last_data_collect_time;
+int last_btn_state, btn_state;
+long last_debounce_time;
 String dataStr = "";
 
-void ISR() {
-  state = (state ? 0 : 1);
-  if (state == 1) {
+void toggle_state(int pin) {
+  int reading = digitalRead(pin);
+  if (reading != last_btn_state) {
+    last_debounce_time = millis();
+  }
+  if ((millis() - last_debounce_time) > 50) {
+    if (reading != btn_state) {
+      btn_state = reading;
+
+      if (btn_state == LOW) {
+        is_collecting_data = (is_collecting_data ? 0 : 1);
+      }
+    }
+  }
+
+  if (is_collecting_data == 1) {
     matrix.renderBitmap(f1, 8, 12);
     File dataFile = SD.open(fileName, FILE_WRITE);
     dataFile.println("start");
     dataFile.close();
   } else matrix.renderBitmap(f0, 8, 12);
+
+  last_btn_state = reading;
 }
 
 void setup() {
@@ -31,12 +47,13 @@ void setup() {
   matrix.renderBitmap(f0, 8, 12);
   showStateOffHtml();
   pinMode(btn, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(btn), ISR, RISING);
-  m = millis();
+  last_data_collect_time = millis();
+  last_btn_state = HIGH;
 }
 
 void loop() {
-  if (state && millis() - m >= interval) {
+  toggle_state(btn);
+  if (is_collecting_data && millis() - last_data_collect_time >= interval) {
     dataStr = getCurrTime() + " " + dhtdata() + " " + pmsdata() + " " + bmedata();
     File dataFile = SD.open(fileName, FILE_WRITE);
     if (dataFile) {
@@ -49,8 +66,8 @@ void loop() {
       Serial.println("SD error");
       sdState = 0;
     }
-    m = millis();
+    last_data_collect_time = millis();
   }
-  if (state && dataStr != "") clientPrintValues(dataStr);
-  if (!state) showStateOffHtml();
+  if (is_collecting_data && dataStr != "") clientPrintValues(dataStr);
+  if (!is_collecting_data) showStateOffHtml();
 }
