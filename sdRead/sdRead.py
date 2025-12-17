@@ -1,11 +1,11 @@
 import serial
 import time
 
-ser = serial.Serial("COM3", 115200)
+ser = serial.Serial("COM3", 115200) # change COM3 to your Arduino's serial port
 file = "123456789.txt" # specify your file name here
 
 ser.write(b"1") # signal to start sending data
-time.sleep(2) # wait for the Arduino to send data
+time.sleep(1) # wait for the Arduino to send data
 with open(file, "w") as f:
     while True:
         if ser.in_waiting:
