@@ -22,16 +22,15 @@ void toggle_state(int pin) {
 
       if (btn_state == LOW) {
         is_collecting_data = (is_collecting_data ? 0 : 1);
+        if (is_collecting_data == 1) {
+          matrix.renderBitmap(f1, 8, 12);
+          File dataFile = SD.open(fileName, FILE_WRITE);
+          dataFile.println("start");
+          dataFile.close();
+        } else matrix.renderBitmap(f0, 8, 12);
       }
     }
   }
-
-  if (is_collecting_data == 1) {
-    matrix.renderBitmap(f1, 8, 12);
-    File dataFile = SD.open(fileName, FILE_WRITE);
-    dataFile.println("start");
-    dataFile.close();
-  } else matrix.renderBitmap(f0, 8, 12);
 
   last_btn_state = reading;
 }
