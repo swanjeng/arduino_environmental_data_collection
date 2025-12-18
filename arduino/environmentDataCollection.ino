@@ -5,24 +5,24 @@
 #include "ledMat.h"
 #define btn 3
 
-byte is_collecting_data = 0;
-long last_data_collect_time;
-int last_btn_state, btn_state;
-long last_debounce_time;
+byte isCollectingData = 0;
+long lastDataCollectTime;
+int lastButtonState, buttonState;
+long lastDebounceTime;
 String dataStr = "";
 
-void toggle_state(int pin) {
+void toggleState(int pin) {
   int reading = digitalRead(pin);
-  if (reading != last_btn_state) {
-    last_debounce_time = millis();
+  if (reading != lastButtonState) {
+    lastDebounceTime = millis();
   }
-  if ((millis() - last_debounce_time) > 50) {
-    if (reading != btn_state) {
-      btn_state = reading;
+  if ((millis() - lastDebounceTime) > 50) {
+    if (reading != buttonState) {
+      buttonState = reading;
 
-      if (btn_state == LOW) {
-        is_collecting_data = (is_collecting_data ? 0 : 1);
-        if (is_collecting_data == 1) {
+      if (buttonState == LOW) {
+        isCollectingData = (isCollectingData ? 0 : 1);
+        if (isCollectingData == 1) {
           matrix.renderBitmap(f1, 8, 12);
           File dataFile = SD.open(fileName, FILE_WRITE);
           dataFile.println("start");
@@ -32,7 +32,8 @@ void toggle_state(int pin) {
     }
   }
 
-  last_btn_state = reading;
+  
+  lastButtonState = reading;
 }
 
 void setup() {
@@ -46,13 +47,13 @@ void setup() {
   matrix.renderBitmap(f0, 8, 12);
   showStateOffHtml();
   pinMode(btn, INPUT_PULLUP);
-  last_data_collect_time = millis();
-  last_btn_state = HIGH;
+  lastDataCollectTime = millis();
+  lastButtonState = HIGH;
 }
 
 void loop() {
-  toggle_state(btn);
-  if (is_collecting_data && millis() - last_data_collect_time >= interval) {
+  toggleState(btn);
+  if (isCollectingData && millis() - lastDataCollectTime >= interval) {
     dataStr = getCurrTime() + " " + dhtdata() + " " + pmsdata() + " " + bmedata();
     File dataFile = SD.open(fileName, FILE_WRITE);
     if (dataFile) {
@@ -65,8 +66,8 @@ void loop() {
       Serial.println("SD error");
       sdState = 0;
     }
-    last_data_collect_time = millis();
+    lastDataCollectTime = millis();
   }
-  if (is_collecting_data && dataStr != "") clientPrintValues(dataStr);
-  if (!is_collecting_data) showStateOffHtml();
+  if (isCollectingData && dataStr != "") clientPrintValues(dataStr);
+  if (!isCollectingData) showStateOffHtml();
 }
