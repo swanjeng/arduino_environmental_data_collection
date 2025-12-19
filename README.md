@@ -45,22 +45,21 @@ All the configurations available are in configuration.h. The contents are shown 
 #define interval 30000 // collection interval (ms)
 ```
 
-Before inserting the micro SD card into the SD card module, make sure that the micro SD card is formatted as FAT32 and that in the root path of the micro SD card, there is a file with the same name as the fileName constant in configuration.h.
+Before inserting the micro SD card into the SD card module, make sure that the micro SD card is formatted as FAT32.
 
-After the Arduino IDE has uploaded the program, you can press the button to start collecting temperature, humidity, pm1.0, pm2.5, pm10, and air pressure data to the file in the microSD card.
-If the LED matrix doesn't show "ON", just press the button again.
+After the Arduino IDE uploads the program, you can press the button to start collecting temperature, humidity, pm1.0, pm2.5, pm10, and air pressure data to the file in the microSD card.
 
-during data collection, you can view the real time data on your web browser.
+during data collection, you can view the real-time data on your web browser.
 The Arduino's IP will be shown on Serial Monitor.
 If the Arduino is connected to your phone AP, the IP can be seen somewhere in your phone's AP settings. The place varies and depends on your phone's brand.
 
 ### Python
 
-After the data collection, you can copy the file in your SD card to the same path as the Python files.
+After the data collection, you can copy the file in your microSD card to the same path as the Python files.
 
-If you don't have an SD card reader, you can use the programs in `sdRead/`. The Arduino sketch should be uploaded before the Python code runs.
+If you don't have an SD card reader, you can use the programs in `sdRead/` in this repo. The Arduino sketch should be uploaded before the Python code runs.
 
-The programs will transfer the data in the micro SD card to a file in the path of the Python program, and then the data file in the micro SD card will be cleared for the next data collection.
+The programs will transfer the data in the microSD card to a file in the path of the Python program, and then the data file in the micro SD card will be cleared for the next data collection.
 
 Before running the Python program, please make sure that the Serial Monitor in Arduino IDE is closed.
 
