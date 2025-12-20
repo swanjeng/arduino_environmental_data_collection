@@ -29,4 +29,5 @@ if Max > 35.5: plt.fill_between(data["time"], [35.5] * len(data["date"]), [min(5
 if Max > 55.5: plt.fill_between(data["time"], [55.5] * len(data["date"]), [min(125.5, Max)] * len(data["date"]), color="#FF0000", alpha=al)
 if Max > 125.5: plt.fill_between(data["time"], [125.5] * len(data["date"]), [min(225.5, Max)] * len(data["date"]), color="#8000FF", alpha=al)
 if Max > 225.5: plt.fill_between(data["time"], [225.5] * len(data["date"]), [max(data[d])] * len(data["date"]), color="#800000", alpha=al)
+plt.title("PM2.5 Levels Over Time with AQI Ranges")
 plt.show()
