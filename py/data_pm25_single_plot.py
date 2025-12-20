@@ -6,7 +6,10 @@ from matplotlib.font_manager import FontProperties as font
 from datetime import datetime
 import glob
 
-plt.rcParams['font.sans-serif'] = ['SimSun']  # 中文字體
+# 如需要中文字體才需要這兩行 / these two lines are needed only if displaying Chinese is needed.
+# 中文版 OS 內建 Noto Sans CJK / Chinese version OSes already has Noto Sans CJK.
+# Matplotlib 讀到的會是 JP / the font family seen by matplotlib is "JP".
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK JP']  
 mpl.rcParams['axes.unicode_minus'] = False
 
 filenames = glob.glob(r'*abc.txt') # change abc to your file suffix for the same location
@@ -25,5 +28,6 @@ for i in range(len(filenames)):
     plt.legend()
 plt.title("PM2.5 Levels Over Time at abc")
 plt.show()
+
 
 
