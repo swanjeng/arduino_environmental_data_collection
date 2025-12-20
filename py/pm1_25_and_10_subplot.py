@@ -6,7 +6,10 @@ import matplotlib.dates as mdates
 from datetime import datetime
 import glob
 
-plt.rcParams['font.sans-serif'] = ['SimSun']
+# 如需要中文字體才需要這兩行 / these two lines are needed only if displaying Chinese is needed.
+# 中文版 OS 內建 Noto Sans CJK / Chinese version OSes already has Noto Sans CJK.
+# Matplotlib 讀到的會是 JP / the font family seen by matplotlib is "JP".
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK JP']  
 mpl.rcParams['axes.unicode_minus'] = False
 
 def subPlot(data, ax, type, p, col):
@@ -51,4 +54,5 @@ plt.legend()
 # plt.tight_layout() # uncomment this if needed
 
 plt.show()
+
 
