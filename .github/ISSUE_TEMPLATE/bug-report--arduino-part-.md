@@ -1,5 +1,5 @@
 ---
-name: Bug_report_Arduino_part
+name: Bug report (Arduino part)
 about: Create a report to help improve the project
 title: ''
 labels: ''
@@ -20,11 +20,8 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Board (please complete the following information):**
- - Name: [e.g. Arduino Uno R4 WiFi]
-
-**WiFi Library (please complete the following information):**
- - Name: [e.g. WIFIS3.h]
+**Content of configuration.h (please complete the following information):**
+ - 
 
 **Additional context**
 Add any other context about the problem here.
