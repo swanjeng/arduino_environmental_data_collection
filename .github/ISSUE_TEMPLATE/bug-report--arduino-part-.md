@@ -21,7 +21,7 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Content of configuration.h (please complete the following information):**
- - 
+ Paste the content of the file with WiFi password hidden
 
 **Additional context**
 Add any other context about the problem here.
