@@ -36,6 +36,8 @@ The SD card module, the DHT22 sensor and the BME280 sensor are connected to the 
 
 ### Arduino
 
+The programs for Arduino are in `environmentDataCollection/`.
+
 All the configurations available are in configuration.h. The contents are shown below.
 
 ```cpp
@@ -69,6 +71,8 @@ file = "123456789.txt" # specify your file name here
 ```
 
 Then, it is the data analyzing part.
+
+The programs for data visualization are in `data_visualization/`.
 
 Please make sure that `matplotlib` and `glob` are installed and the file names are correct.
 
