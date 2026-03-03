@@ -68,7 +68,7 @@ if max_value > 225.5:
                      [max(data[plot_data])] * len(data["date"]), color="#800000", alpha=al)
 
 
-plt.title("PM2.5 Levels Over Time with AQI Ranges // Swan的自主學習計劃",
+plt.title("PM2.5 Levels Over Time with AQI Ranges",
           fontproperties=font)
 plt.show()
 
