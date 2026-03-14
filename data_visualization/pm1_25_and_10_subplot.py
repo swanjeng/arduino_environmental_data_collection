@@ -7,7 +7,7 @@ from datetime import datetime
 import glob
 
 # 如需要中文字體才需要這兩行 / these two lines are needed only if displaying Chinese is needed.
-# 中文版 OS 內建 Noto Sans CJK / Chinese version OSes already has Noto Sans CJK.
+# 中文版 OS 內建 Noto Sans CJK / Chinese version OSes already have Noto Sans CJK.
 # Matplotlib 讀到的會是 JP / the font family seen by matplotlib is "JP".
 plt.rcParams['font.sans-serif'] = ['Noto Sans CJK JP']  
 mpl.rcParams['axes.unicode_minus'] = False
